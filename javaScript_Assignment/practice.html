@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <meta name="viewport" content="width=device-width, intial-scale=1">
+            <link rel="icon" href="media/logo.png" type="image/x-icon">
+            <title>BlockON</title>
+            <link rel="stylesheet" href="cssFiles/bootstrap.min.css">
+            <script src="jsFiles/jquery.min.js"></script>
+            <script src="jsFiles/bootstrap.min.js"></script>
+            
+    </head>
+    <body>
+        <form id="contactForm" action="dashboard.html" method="POST">
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" name="name" id="name">
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email">
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea name="message" id="message"></textarea>
+            </div>
+            <div class="field">
+              <input type="submit" value="send" id="submitData">
+            </div>
+          </form>
+          <div id="welcomeMessage"></div>
+          <script>
+            window.onload = function() {
+
+            // Check for LocalStorage support.
+            if (localStorage) {
+
+              // Add an event listener for form submissions
+              document.getElementById('contactForm').addEventListener('submit', function() {
+                // Get the value of the name field.
+                var name = document.getElementById('name').value;
+
+                // Save the name in localStorage.
+                localStorage.setItem('name', name);
+              });
+
+              var name = localStorage.getItem('name');
+
+              if (name != "undefined" || name != "null") {
+                document.getElementById('welcomeMessage').innerHTML = "Hello " + name + "!";
+              } else
+                document.getElementById('welcomeMessage').innerHTML = "Hello!";
+              }
+
+}
+
+
+          </script>
+    </body>
+</html>
